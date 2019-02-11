@@ -22,7 +22,7 @@ public class DBconnection {
         }
         //String url = "jdbc:mysql://localhost:3306/library user details";
         try {
-            DBconnection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/Library_System", "root", "123");
+            DBconnection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/Library_System", "root", "");
             System.out.println("Database Connected");
         } catch (SQLException se) {
             System.out.println("No Database" + se);

@@ -36,14 +36,29 @@ public class BookDetails extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
         lblBkType = new javax.swing.JLabel();
         lblBookCat = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        comboType = new javax.swing.JComboBox<String>();
-        comboBookCat = new javax.swing.JComboBox<String>();
+        comboType = new javax.swing.JComboBox<>();
+        comboBookCat = new javax.swing.JComboBox<>();
         btnSearch = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -54,9 +69,9 @@ public class BookDetails extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel3.setText("Book  Details");
 
-        comboType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Computer Science", "Mathematics", "Languages", "Management" }));
+        comboType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Computer Science", "Mathematics", "Languages", "Management" }));
 
-        comboBookCat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Java", "C", "SQL", "Algorithms", "Vectors", "Hindi", "Sinhala", "Accounting" }));
+        comboBookCat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Java", "C", "SQL", "Algorithms", "Vectors", "Hindi", "Sinhala", "Accounting" }));
         comboBookCat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBookCatActionPerformed(evt);
@@ -75,7 +90,7 @@ public class BookDetails extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Book_Id", "Book_Title", "Author"
+                "Book_Id", "Book_Title", "Author", "Day_publish"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -84,6 +99,10 @@ public class BookDetails extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnSearch)
+                .addGap(25, 25, 25))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -99,14 +118,11 @@ public class BookDetails extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblBookCat)
                                 .addGap(86, 86, 86)
-                                .addComponent(comboBookCat, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 27, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSearch))
-                .addGap(25, 25, 25))
+                                .addComponent(comboBookCat, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(53, 53, 53)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(142, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -123,9 +139,9 @@ public class BookDetails extends javax.swing.JFrame {
                     .addComponent(lblBookCat))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSearch)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addGap(63, 63, 63)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(89, Short.MAX_VALUE))
         );
 
         pack();
@@ -149,7 +165,9 @@ public class BookDetails extends javax.swing.JFrame {
                 //System.out.println(book_Id);
                 String book_title = rs.getString("Book_Title");
                 String author = rs.getString("Author");
-                Object[] raw = {book_Id, book_title, author};
+                String day_publish= rs.getString("Day_Publish");
+                
+                Object[] raw = {book_Id, book_title, author,day_publish};
                 DefaultTableModel defaultTableModel = (DefaultTableModel) jTable1.getModel();
                 defaultTableModel.addRow(raw);
             }
@@ -200,7 +218,9 @@ public class BookDetails extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> comboType;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     private javax.swing.JLabel lblBkType;
     private javax.swing.JLabel lblBookCat;
     // End of variables declaration//GEN-END:variables
