@@ -183,7 +183,7 @@
                 <Column editable="true" title="Book_Id" type="java.lang.Object"/>
                 <Column editable="true" title="Book_Title" type="java.lang.Object"/>
                 <Column editable="true" title="Author" type="java.lang.Object"/>
-                <Column editable="true" title="Day_publish" type="java.lang.Object"/>
+                <Column editable="true" title="Published Date" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">

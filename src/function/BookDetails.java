@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
@@ -90,7 +91,7 @@ public class BookDetails extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Book_Id", "Book_Title", "Author", "Day_publish"
+                "Book_Id", "Book_Title", "Author", "Published Date"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -165,9 +166,9 @@ public class BookDetails extends javax.swing.JFrame {
                 //System.out.println(book_Id);
                 String book_title = rs.getString("Book_Title");
                 String author = rs.getString("Author");
-                String day_publish= rs.getString("Day_Publish");
-                
-                Object[] raw = {book_Id, book_title, author,day_publish};
+                Date publishedDate = rs.getDate("date");
+//Date day_publish= rs.getDate("Day_Publish");
+                Object[] raw = {book_Id, book_title, author, publishedDate};
                 DefaultTableModel defaultTableModel = (DefaultTableModel) jTable1.getModel();
                 defaultTableModel.addRow(raw);
             }

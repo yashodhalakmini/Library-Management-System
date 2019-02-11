@@ -1,8 +1,8 @@
 package function;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import javax.swing.JOptionPane;
+//import java.sql.Connection;
+//import java.sql.PreparedStatement;
+//import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -12,6 +12,11 @@ import javax.swing.JOptionPane;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -47,7 +52,7 @@ public class HomePage extends javax.swing.JFrame {
         btnLogout = new javax.swing.JButton();
         btnSearch = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtDate = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -94,11 +99,11 @@ public class HomePage extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Day Publish");
+        jLabel1.setText("Published Date");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txtDate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txtDateActionPerformed(evt);
             }
         });
 
@@ -131,7 +136,7 @@ public class HomePage extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
@@ -192,7 +197,7 @@ public class HomePage extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSearch)
@@ -213,9 +218,18 @@ public class HomePage extends javax.swing.JFrame {
         String book_Author = txtbookauthor.getText();
         String book_Id = txtbookid.getText();
         String book_Category = txtBookCat.getText();
-        String day_publish=jTextField1.getText();
 
-        String sql = "INSERT INTO Book VALUES ('" + book_Id + "','" + book_title + "','" + book_Type + "','" + book_Author + "','" + book_Category + "')";
+        String date = txtDate.getText();
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
+//        Date dt = null;
+//        try {
+//            dt = sdf.parse(text);
+//        } catch (ParseException ex) {
+//            Logger.getLogger(HomePage.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+
+        //java.sql.Date date = java.sql.Date.valueOf(dt);
+        String sql = "INSERT INTO Book VALUES ('" + book_Id + "','" + book_title + "','" + book_Type + "','" + book_Author + "','" + book_Category + "','" + date + "')";
         Connection connection = new DBconnection().connect();
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
@@ -227,7 +241,7 @@ public class HomePage extends javax.swing.JFrame {
                 txtbookauthor.setText("");
                 txtbookid.setText("");
                 txtBookCat.setText("");
-                jTextField1.setText("");
+                txtDate.setText("");
             } else {
                 JOptionPane.showMessageDialog(this, "Added Failed");
             }
@@ -263,9 +277,9 @@ public class HomePage extends javax.swing.JFrame {
         bd.setVisible(true);
     }//GEN-LAST:event_btnSearchActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txtDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDateActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txtDateActionPerformed
 
     /**
      * @param args the command line arguments
@@ -310,13 +324,13 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmbbooktype;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lblBookCat;
     private javax.swing.JLabel lblbookauthor;
     private javax.swing.JLabel lblbookid;
     private javax.swing.JLabel lblbooktitle;
     private javax.swing.JLabel lblbooktype;
     private javax.swing.JTextField txtBookCat;
+    private javax.swing.JTextField txtDate;
     private javax.swing.JTextField txtbookauthor;
     private javax.swing.JTextField txtbookid;
     private javax.swing.JTextField txtbooktitle;
